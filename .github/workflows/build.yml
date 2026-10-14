@@ -17,7 +17,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: 17 }
-      - uses: android-actions/setup-android@v3
+      - name: Prepare Android SDK (preinstalled on runner)
+        run: |
+          SDKM=$(ls $ANDROID_HOME/cmdline-tools/*/bin/sdkmanager | head -1)
+          echo "sdkmanager: $SDKM"
+          yes | $SDKM --licenses > /dev/null || true
+          $SDKM "platforms;android-35" "build-tools;35.0.0" "platform-tools"
+          echo "sdk.dir=$ANDROID_HOME" > android/local.properties
       - run: ./gradlew testDebugUnitTest assembleDebug -PSERVER_URL=${{ env.SERVER_URL }}
         working-directory: android
       - name: Checksum
