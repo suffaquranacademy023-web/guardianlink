@@ -1,0 +1,8 @@
+HOSTINGER UPLOAD (Node.js app)
+1. hPanel -> Websites -> Add Website -> Node.js Apps. Choose Node 22 (must be 22.5 or newer; if you only see 18/20 you need a VPS).
+2. Upload this zip (or its contents), startup file: src/index.js, start command: npm start
+3. Environment variables (hPanel -> Node.js app -> Environment):
+     JWT_SECRET = a long random string, 40+ characters (REQUIRED)
+     DB_PATH    = ./data/guardianlink.db
+4. Start the app, open your domain, click "Create account", then "Add a device".
+5. Later, upload GuardianLink.apk and GuardianLink-Setup.exe into public/downloads/.

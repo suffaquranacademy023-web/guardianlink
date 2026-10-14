@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GuardianLink — Family Safety</title>
+<link rel="stylesheet" href="app.css">
+</head><body>
+<header class="top"><div class="brand">🛡️ GuardianLink</div>
+<nav><a href="#features">Features</a><a href="#downloads">Downloads</a><a href="#privacy">Privacy</a><button id="themeBtn" class="ghost" aria-label="Toggle theme">◐</button><button id="logoutBtn" class="ghost" hidden>Sign out</button></nav></header>
+<main>
+<section id="landing">
+  <div class="hero"><h1>Transparent family safety.</h1><p>See where your children's devices are, set safe zones and screen-time insight — with the child's knowledge and consent, always. Every device shows a permanent notice and can leave the family at any time.</p></div>
+  <div id="authBox" class="card narrow">
+    <div class="tabs"><button id="tabLogin" class="tab on">Sign in</button><button id="tabReg" class="tab">Create account</button></div>
+    <form id="authForm" novalidate>
+      <label>Email<input id="email" type="email" autocomplete="email" required></label>
+      <label>Password<input id="password" type="password" autocomplete="current-password" minlength="10" required><small>At least 10 characters.</small></label>
+      <label id="famRow" hidden>Family name<input id="famName" type="text" value="My Family" maxlength="100"></label>
+      <button class="primary" id="authSubmit" type="submit">Sign in</button>
+      <p id="authMsg" class="msg" role="alert"></p>
+    </form>
+  </div>
+  <div id="features" class="grid">
+    <div class="card"><h3>Consent first</h3><p>Devices enroll with a one-time code and an explicit consent screen. No hidden mode.</p></div>
+    <div class="card"><h3>Location &amp; safe zones</h3><p>Recent locations and geofences for each enrolled device.</p></div>
+    <div class="card"><h3>Screen-time insight</h3><p>Daily app usage reported by the device.</p></div>
+    <div class="card"><h3>Lock a device</h3><p>Send a lock request; the device shows it was requested by a parent.</p></div>
+  </div>
+  <div id="downloads" class="card"><h3>Downloads</h3><p>Releases are listed with SHA-256 checksums in <code>RELEASES.md</code>. Verify before installing.</p>
+    <p><a href="/downloads/GuardianLink.apk">Android (APK)</a> · <a href="/downloads/GuardianLink-Setup.exe">Windows installer</a></p></div>
+  <div id="privacy" class="card"><h3>Privacy</h3><p>We store only what is needed: account email, device name, battery, location history, app usage and an audit log. Parents can revoke any device; devices can leave at any time. See <code>docs/PRIVACY.md</code> for the full policy template to adapt to your jurisdiction.</p></div>
+</section>
+
+<section id="dash" hidden>
+  <div class="row"><h2 id="famTitle">Dashboard</h2><button id="pairBtn" class="primary">Add a device</button></div>
+  <div id="pairBox" class="card" hidden><p>On the child's device, open GuardianLink and enter this code (valid 15 minutes, single use):</p><div id="pairCode" class="code"></div></div>
+  <div id="devices" class="grid"></div>
+  <div id="detail" class="card" hidden><h3 id="detailTitle"></h3><h4>Recent locations</h4><ul id="locs"></ul><h4>App usage</h4><ul id="usage"></ul></div>
+  <div class="card"><h3>Safe zones</h3><form id="gfForm" class="inline"><input id="gfName" placeholder="Name" required maxlength="100"><input id="gfLat" type="number" step="any" placeholder="Lat" required><input id="gfLng" type="number" step="any" placeholder="Lng" required><input id="gfRad" type="number" placeholder="Radius m" min="10" required><button class="primary">Add</button></form><ul id="gfList"></ul></div>
+  <div class="card"><h3>Activity log</h3><ul id="audit"></ul></div>
+</section>
+</main>
+<div id="toast" role="status"></div>
+<script src="app.js"></script>
+</body></html>
