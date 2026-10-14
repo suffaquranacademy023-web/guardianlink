@@ -32,7 +32,7 @@ jobs:
         if: failure()
         shell: bash
         run: |
-          grep -v -E "^> Task|^$|UP-TO-DATE|SKIPPED|NO-SOURCE" build.log | tail -45 | cut -c1-300 | while IFS= read -r l; do echo "::error::${l}"; done
+          grep -E "^e: |What went wrong|Execution failed|Caused by|error:|Unresolved|[Cc]annot find|not found|AAPT|Manifest|FAILED|\\* What|^> [A-Z]" build.log | grep -v -E "^> Task" | awk '!seen[$0]++' | head -25 | cut -c1-350 | while IFS= read -r l; do echo "::error::${l}"; done
       - name: Checksum
         run: |
           cp android/app/build/outputs/apk/debug/app-debug.apk GuardianLink.apk
