@@ -1,3 +1,4 @@
+[hidden]{display:none!important}
 :root{--bg:#f6f8fb;--fg:#14202e;--card:#fff;--mut:#5b6b7d;--pri:#0b6bcb;--bd:#dbe3ec;--bad:#c62828}
 :root[data-theme=dark]{--bg:#0e1621;--fg:#e8eef5;--card:#17222f;--mut:#9fb0c3;--pri:#4da3ff;--bd:#27384a;--bad:#ff7b7b}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e1621;--fg:#e8eef5;--card:#17222f;--mut:#9fb0c3;--pri:#4da3ff;--bd:#27384a;--bad:#ff7b7b}}
