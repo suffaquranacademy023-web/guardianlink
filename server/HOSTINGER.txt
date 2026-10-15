@@ -2,7 +2,7 @@ HOSTINGER: HOW TO DEPLOY (Node.js app, NOT File Manager/public_html)
 
 0. BEFORE zipping: put GuardianLink.apk and GuardianLink-Setup.exe (from GitHub Actions artifacts) into  public/downloads/  inside this folder, then zip the CONTENTS of the folder (package.json must be at the zip's top level).
 1. hPanel -> your Node.js app -> Settings / "Build and output settings": set Node version to 22.x (NOT 18). Node 22.13+ is best.
-   Entry file: src/index.js     Start command: npm start     Framework: Other/Express is fine.
+   Entry file: server.js (default is fine)     Start command: npm start     Framework: Other/Express is fine.
 2. Environment variables (Node.js app -> Environment variables):
      JWT_SECRET = long random text, 40+ characters (REQUIRED, keep it private)
      DB_PATH    = /home/u172905876/gl-data/guardianlink.db      <- OUTSIDE the app folder so redeploys never erase accounts

@@ -7,8 +7,9 @@
     "node": ">=22.5"
   },
   "scripts": {
-    "start": "node --experimental-sqlite src/index.js",
+    "start": "node --experimental-sqlite server.js",
     "test": "node --experimental-sqlite --test test/*.test.js"
   },
-  "main": "src/index.js"
+  "main": "server.js",
+  "dependencies": {}
 }
