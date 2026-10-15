@@ -1,7 +1,7 @@
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { openDb } from '../src/db.js';
-import { createApp } from '../src/app.js';
+import { openDb } from '../src/db.mjs';
+import { createApp } from '../src/app.mjs';
 
 let server, base;
 const SECRET = 'x'.repeat(40);

@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { join, normalize, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { randomInt } from 'node:crypto';
-import { hashPassword, verifyPassword, signJwt, verifyJwt, sha256, randomToken, safeEqualHex } from './crypto.js';
+import { hashPassword, verifyPassword, signJwt, verifyJwt, sha256, randomToken, safeEqualHex } from './crypto.mjs';
 
 const PUBLIC = join(fileURLToPath(new URL('.', import.meta.url)), '..', 'public');
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.json': 'application/json', '.apk': 'application/vnd.android.package-archive', '.exe': 'application/vnd.microsoft.portable-executable' };

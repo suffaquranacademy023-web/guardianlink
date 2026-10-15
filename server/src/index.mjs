@@ -13,8 +13,8 @@ function fail(msg) {
 try {
   const secret = process.env.JWT_SECRET;
   if (!secret || secret.length < 32) throw new Error('JWT_SECRET must be set (>= 32 characters) in Environment variables.');
-  const { openDb } = await import('./db.js');
-  const { createApp } = await import('./app.js');
+  const { openDb } = await import('./db.mjs');
+  const { createApp } = await import('./app.mjs');
   let db;
   try { db = openDb(process.env.DB_PATH || './data/guardianlink.db'); }
   catch (e) { throw new Error(`Cannot open database at DB_PATH (${process.env.DB_PATH || './data/guardianlink.db'}): ${e.message}`); }
