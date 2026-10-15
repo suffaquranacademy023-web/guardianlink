@@ -1,8 +1,13 @@
-HOSTINGER UPLOAD (Node.js app)
-1. hPanel -> Websites -> Add Website -> Node.js Apps. Choose Node 22 (must be 22.5 or newer; if you only see 18/20 you need a VPS).
-2. Upload this zip (or its contents), startup file: src/index.js, start command: npm start
-3. Environment variables (hPanel -> Node.js app -> Environment):
-     JWT_SECRET = a long random string, 40+ characters (REQUIRED)
-     DB_PATH    = ./data/guardianlink.db
-4. Start the app, open your domain, click "Create account", then "Add a device".
-5. Later, upload GuardianLink.apk and GuardianLink-Setup.exe into public/downloads/.
+HOSTINGER: HOW TO DEPLOY (Node.js app, NOT File Manager/public_html)
+
+0. BEFORE zipping: put GuardianLink.apk and GuardianLink-Setup.exe (from GitHub Actions artifacts) into  public/downloads/  inside this folder, then zip the CONTENTS of the folder (package.json must be at the zip's top level).
+1. hPanel -> your Node.js app -> Settings / "Build and output settings": set Node version to 22.x (NOT 18). Node 22.13+ is best.
+   Entry file: src/index.js     Start command: npm start     Framework: Other/Express is fine.
+2. Environment variables (Node.js app -> Environment variables):
+     JWT_SECRET = long random text, 40+ characters (REQUIRED, keep it private)
+     DB_PATH    = /home/u172905876/gl-data/guardianlink.db      <- OUTSIDE the app folder so redeploys never erase accounts
+                  (folder is created automatically; if the path is refused, ask Hostinger support for your home path)
+3. Upload this zip with "Redeploy" (or Upload files), wait for "Completed".
+4. Open https://deepskyblue-ibex-929403.hostingersite.com/api/health  -> should show {"ok":true}
+5. Open the site, "Create account", then "Add a device".
+The old MongoDB database on this app is not used by GuardianLink; you can leave it.
